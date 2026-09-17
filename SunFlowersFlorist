@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Saya</title>
+<style>
+:root{--primary:#4f46e5;--dark:#172033;--bg:#f6f7fb}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:var(--dark);background:var(--bg)}
+nav{position:sticky;top:0;z-index:3;background:#fff;padding:15px 6%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px #0001}
+.logo{font-size:22px;font-weight:800;color:var(--primary)}nav a{margin-left:18px;color:var(--dark);text-decoration:none;font-weight:bold}
+.hero{padding:90px 6%;text-align:center;background:linear-gradient(135deg,#eef2ff,#fff)}
+.hero h1{font-size:48px;margin:0 auto 15px;max-width:850px}.hero p{max-width:650px;margin:0 auto 25px;color:#667085;font-size:18px;line-height:1.6}
+.btn{display:inline-block;border:0;border-radius:10px;padding:12px 20px;background:var(--primary);color:white;font-weight:bold;cursor:pointer;text-decoration:none}
+section{max-width:1100px;margin:auto;padding:65px 6%}h2{text-align:center;font-size:30px;margin-bottom:25px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;padding:24px;border-radius:16px;box-shadow:0 5px 22px #0000000b}.card h3{margin-top:0}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.gallery img{width:100%;height:210px;object-fit:cover;border-radius:14px}
+footer{text-align:center;padding:28px;background:#111827;color:white}
+.edit{position:fixed;right:18px;bottom:18px;z-index:5;border:0;border-radius:12px;background:#111827;color:#fff;padding:13px 17px;cursor:pointer;font-weight:bold}
+.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:10;padding:20px;align-items:center;justify-content:center}
+.editor{width:min(720px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:18px;padding:25px}
+.field{margin:12px 0}.field label{display:block;font-weight:bold;margin-bottom:6px}.field input,.field textarea{width:100%;padding:10px;border:1px solid #d7dce5;border-radius:9px}.field textarea{min-height:75px;resize:vertical}
+.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+@media(max-width:700px){.hero h1{font-size:34px}.grid,.gallery{grid-template-columns:1fr}nav div:last-child{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo" id="logo">Website Saya</div>
+  <div><a href="#home">Beranda</a><a href="#about">Tentang</a><a href="#services">Layanan</a><a href="#gallery">Galeri</a><a href="#contact">Kontak</a></div>
+</nav>
+
+<header class="hero" id="home">
+  <h1 id="title">Website Impian Anda</h1>
+  <p id="subtitle">Website sederhana, modern, dan mudah Anda edit sendiri.</p>
+  <a class="btn" href="#contact" id="buttonText">Hubungi Kami</a>
+</header>
+
+<section id="about">
+  <h2>Tentang Kami</h2>
+  <div class="card"><p id="aboutText">Tuliskan informasi tentang sekolah, usaha, organisasi, toko, atau diri Anda di sini.</p></div>
+</section>
+
+<section id="services">
+  <h2>Layanan</h2>
+  <div class="grid">
+    <div class="card"><h3 id="s1t">Layanan 1</h3><p id="s1p">Deskripsi layanan pertama.</p></div>
+    <div class="card"><h3 id="s2t">Layanan 2</h3><p id="s2p">Deskripsi layanan kedua.</p></div>
+    <div class="card"><h3 id="s3t">Layanan 3</h3><p id="s3p">Deskripsi layanan ketiga.</p></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>Galeri</h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80">
+    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80">
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Kontak</h2>
+  <div class="card"><p id="contactText">Email: emailanda@example.com<br>WhatsApp: 08xxxxxxxxxx<br>Alamat: Kota Anda</p></div>
+</section>
+
+<footer><span id="footer">© 2026 Website Saya</span></footer>
+
+<button class="edit" onclick="openEditor()">✏️ Edit Website</button>
+
+<div class="overlay" id="overlay">
+<div class="editor">
+<h2 style="text-align:left;margin-top:0">Editor Website</h2>
+<div class="field"><label>Nama / Logo</label><input id="eLogo"></div>
+<div class="field"><label>Judul utama</label><input id="eTitle"></div>
+<div class="field"><label>Deskripsi utama</label><textarea id="eSubtitle"></textarea></div>
+<div class="field"><label>Teks tombol</label><input id="eButton"></div>
+<div class="field"><label>Tentang</label><textarea id="eAbout"></textarea></div>
+<div class="field"><label>Layanan 1</label><input id="eS1t"><input id="eS1p"></div>
+<div class="field"><label>Layanan 2</label><input id="eS2t"><input id="eS2p"></div>
+<div class="field"><label>Layanan 3</label><input id="eS3t"><input id="eS3p"></div>
+<div class="field"><label>Kontak</label><textarea id="eContact"></textarea></div>
+<div class="field"><label>Warna utama</label><input type="color" id="eColor"></div>
+<div class="actions"><button class="btn" style="background:#777" onclick="closeEditor()">Batal</button><button class="btn" onclick="saveEditor()">💾 Simpan</button></div>
+</div></div>
+
+<script>
+const fields={
+logo:'eLogo',title:'eTitle',subtitle:'eSubtitle',buttonText:'eButton',
+aboutText:'eAbout',s1t:'eS1t',s1p:'eS1p',s2t:'eS2t',s2p:'eS2p',s3t:'eS3t',s3p:'eS3p',contactText:'eContact'
+};
+function openEditor(){
+ const d=JSON.parse(localStorage.getItem('websiteData')||'{}');
+ Object.entries(fields).forEach(([target,input])=>{
+   document.getElementById(input).value=d[target] ?? document.getElementById(target).innerText;
+ });
+ document.getElementById('eColor').value=d.color||'#4f46e5';
+ document.getElementById('overlay').style.display='flex';
+}
+function saveEditor(){
+ const d={};
+ Object.entries(fields).forEach(([target,input])=>{
+   d[target]=document.getElementById(input).value;
+   document.getElementById(target).innerText=d[target];
+ });
+ d.color=document.getElementById('eColor').value;
+ document.documentElement.style.setProperty('--primary',d.color);
+ localStorage.setItem('websiteData',JSON.stringify(d));
+ closeEditor();
+}
+function closeEditor(){document.getElementById('overlay').style.display='none'}
+window.addEventListener('load',()=>{
+ const d=JSON.parse(localStorage.getItem('websiteData')||'{}');
+ Object.entries(fields).forEach(([target])=>{if(d[target])document.getElementById(target).innerText=d[target]});
+ if(d.color)document.documentElement.style.setProperty('--primary',d.color);
+});
+</script>
+</body>
+</html>
